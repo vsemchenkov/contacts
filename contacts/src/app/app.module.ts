@@ -17,11 +17,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from './auth.guard';
 import {ProfileModule} from './profile/profile.module';
 import {ProfileRoutingModule} from './profile/profile-routing.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +35,7 @@ import {ProfileRoutingModule} from './profile/profile-routing.module';
     ProfileRoutingModule,
     FormsModule,
     HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [ AuthServicesService, ContactsServicesService, AuthGuard ],
   bootstrap: [ AppComponent ]

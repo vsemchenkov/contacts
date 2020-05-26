@@ -5,14 +5,14 @@
 <div class="collection">
   <div class="row">
     <div class="input-field col s12">
-      <input id="search" type="search" class="validate" name="search" (keyup.enter)="searchInput(searchIn.value)" #searchIn>
+      <input id="search" type="search" class="validate" name="search" [(ngModel)]="term" #searchIn>
       <label for="search">Поиск по контактам</label>
-      <button class="btn" value="Найти" (click)="searchInput(searchIn.value)">Найти</button>
+      <button class="btn" value="Найти">Найти</button>
     </div>
   </div>
 
 </div>
-<div class="collection" *ngFor="let contact of contacts">
+<div class="collection" *ngFor="let contact of contacts | filter:term">
   <ul class="collection-item">
     <li *ngIf="!this.editor">{{ contact.name }}</li>
     <input *ngIf="editor" type="text" name="name" [(ngModel)]="contact.name" #name="ngModel">
