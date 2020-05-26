@@ -1,0 +1,21 @@
+<div class="row" style="width: 300px">
+  <form class="col s12" #f="ngForm" (ngSubmit)="OnSubmit(f)">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate" name="email" ngModel #email="ngModel">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" class="validate" name="password" ngModel #password="ngModel">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button class="btn">Войти</button>
+      </div>
+    </div>
+  </form>
+</div>

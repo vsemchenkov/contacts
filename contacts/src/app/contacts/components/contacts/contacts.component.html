@@ -1,0 +1,19 @@
+<!--<div class="collection" *ngFor="let contact of contacts">-->
+<div class="collection">
+  <a routerLink="add" class="btn">new contact</a>
+</div>
+<div class="collection" *ngFor="let contact of contacts">
+  <ul class="collection-item">
+    <li *ngIf="!this.editor">{{ contact.name }}</li>
+    <input *ngIf="editor" type="text" name="name" ngModel="123" [(ngModel)]="contact.name" #name="ngModel">
+    <li *ngIf="!this.editor">{{ contact.tel }}</li>
+    <input *ngIf="editor" type="text" name="tel" [(ngModel)]="contact.tel" #tel="ngModel">
+    <li>{{ contact.user_id }}
+      <span *ngIf="!this.editor" class="new badge" data-badge-caption="edit" (click)="getEditor()"></span>
+      <span *ngIf="this.editor" class="new badge" data-badge-caption="ok" (click)="editContact(contact._id, contact.user_id, contact.name, contact.tel); getEditor();"></span>
+      <span class="new badge" data-badge-caption="delete" (click)="deleteContact(contact._id); deleteIndex(contact._id)"></span>
+
+    </li>
+    <li>{{ contact._id }}</li>
+  </ul>
+</div>

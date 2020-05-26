@@ -1,0 +1,22 @@
+<div class="row" style="width: 300px">
+  <form class="col s12" #f="ngForm" (ngSubmit)="OnSubmit(f)">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate" name="name" ngModel #name="ngModel">
+        <label for="email">Имя</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" class="validate" name="tel" ngModel #tel="ngModel">
+        <label for="password">Телефон</label>
+      </div>
+    </div>
+    <input type="hidden" name="user_id" [ngModel]="userIds" #userId="ngModel">
+    <div class="row">
+      <div class="input-field col s12">
+        <button class="btn">Добавить контакт</button>
+      </div>
+    </div>
+  </form>
+</div>

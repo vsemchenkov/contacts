@@ -1,0 +1,35 @@
+<style>
+  .sidebar {
+    left: 0;
+
+    position: absolute;
+    width: 200px;
+    height: 100vh;
+
+    margin: 0;
+    padding: 15px;
+
+  }
+  .grid-column {
+    display: grid;
+
+    grid-template-columns: 30px 4fr;
+
+    justify-content: center;
+    align-items: center;
+  }
+  section > ul {
+    padding-left: 15px;
+  }
+</style>
+
+<section class="sidebar">
+  <div class="grid-column">
+      <img src="./assets/img/user.png" width="25" height="25" alt="">
+    <p>Личный кабинет</p>
+  </div>
+  <ul>
+    <a routerLink="/profile"><li>Профиль</li></a>
+    <a routerLink="/contacts"><li>Контакты</li></a>
+  </ul>
+</section>
