@@ -31,9 +31,4 @@ export class ContactsServicesService {
     return this._http.post<any>(this.contactDeleteUrl, contact);
   }
 
-  searchContact(contactId: string, contact) {
-    this.searchUrl = `http://localhost:3000/api/contacts/search/${contactId}`;
-    return this._http.post<any>(this.searchUrl, contact);
-  }
-
 }
