@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ContactsServicesService} from '../../_services/contacts-services.service';
 import {Router} from '@angular/router';
 import {NgModel} from '@angular/forms';
+import {fromEvent, Subject} from 'rxjs';
+import {map, debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import any = jasmine.any;
 
 @Component({
   selector: 'app-contacts',
@@ -12,6 +15,11 @@ export class ContactsComponent implements OnInit {
   public contacts: any;
   public userId: string;
   public editor = false;
+  public search;
+
+  private searchTerms = new Subject<string>();
+  private contact: object;
+
   constructor(private _contacts: ContactsServicesService,
               private _router: Router) { }
   ngOnInit(): void {
@@ -59,5 +67,19 @@ export class ContactsComponent implements OnInit {
         });
   }
 
+  searchInput(value) {
+    this.contact = {
+      name: value,
+      tel: '',
+      user_id: ''
+    };
+    this._contacts.searchContact(this.userId, this.contact)
+       .subscribe(res => {
+         this.contacts = res;
+       },
+         error => {
+         console.log(error);
+         });
+  }
 
 }

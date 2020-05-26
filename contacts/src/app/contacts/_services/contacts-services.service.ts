@@ -11,6 +11,7 @@ export class ContactsServicesService {
   contactsUrl: string;
   contactUrl: string;
   contactDeleteUrl: string;
+  searchUrl: string;
 
   constructor(private _http: HttpClient) { }
   getContacts(user_id) {
@@ -28,6 +29,11 @@ export class ContactsServicesService {
   editContact(contactId: string, contact: any) {
     this.contactDeleteUrl = `http://localhost:3000/api/contacts/edit/${contactId}`;
     return this._http.post<any>(this.contactDeleteUrl, contact);
+  }
+
+  searchContact(contactId: string, contact) {
+    this.searchUrl = `http://localhost:3000/api/contacts/search/${contactId}`;
+    return this._http.post<any>(this.searchUrl, contact);
   }
 
 }

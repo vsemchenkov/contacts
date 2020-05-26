@@ -173,5 +173,24 @@ router.post('/login', function(req, res) {
   })
 });
 
+// --------------------------------------------------
+//  Read all fields in Contacts - R
+// --------------------------------------------------
+router.post('/contacts/search/:user_id', function(req, res) {
+  let contactsData = req.body;
+  // user_id: contactsData.user_id
+  Contact.find({ user_id: req.params.user_id, name: contactsData.name }, function(error, contacts) {
+    if(error) {
+      res.status(401).send('База данных не доступна')
+    }
+    if(!contacts) {
+      res.status(401).send('Пустые контакты');
+    } else {
+      res.send(contacts);
+    }
+
+  })
+});
+
 
 module.exports = router;
